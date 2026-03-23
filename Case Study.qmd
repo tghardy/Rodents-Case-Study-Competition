@@ -1,0 +1,33 @@
+---
+title: "Case Study"
+format: pdf
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(stringr)
+rodents <- vroom::vroom('311_rodent_calls.csv')
+councils <- readxl::read_xlsx('nyc_council.xlsx')
+```
+
+```{r}
+rodents <- rodents %>%
+  mutate(category = case_when(
+    str_detect(`Resolution Description`, "found violations") ~ "Confirmed Rodents",
+    str_detect(`Resolution Description`, "earlier complaint") ~ "Duplicate Request",
+    str_detect(`Resolution Description`, "not access the site| dangerous conditions") ~ "Site Not Available",
+    str_detect(`Resolution Description`, "passed inspection") ~ "No Evidence",
+    str_detect(`Resolution Description`, "minor violations") ~ "Minor Violations",
+    str_detect(`Resolution Description`, "violations were identified| guidance on eliminating") ~ "Owner is Fixing",
+    str_detect(`Resolution Description`, "could not locate") ~ "Incorrect Address",
+    str_detect(`Resolution Description`, "another agency") ~ "Refered to Another Agency",
+    str_detect(`Resolution Description`, "actioned") ~ "Took Action",
+    is.na(`Resolution Description`) ~ "In Progess"
+  ))
+```
+
+```{r}
+data <- rodents %>%
+  filter(is.na(category))
+```
