@@ -1,0 +1,19 @@
+Confirmed ~ That means it said that they found violations
+
+Duplicate ~ That means they had calls already from that location
+
+Site Not Available ~ That means they went to check on the request and were not able to access the site or it had dangerous conditions and they did not look
+
+No Evidence ~ That means they went, did not see evidence of rats
+
+Minor Violations ~ That means it passed but had minor violations
+
+Owner is Fixing ~ Owner has been provided with information on how to fix or has been told they need to fix it
+
+Incorrect Address ~ That means they could not identify the address on the report
+
+Referred to Another Agency ~ Report fell under another agency’s jurisdiction 
+
+Took Action ~ The agency took action
+
+In Progess ~ That means it is still open
